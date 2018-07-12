@@ -1,25 +1,55 @@
-/* #pixelPainter {
-    height: 1000px;
-    width: 1000px;
-} */
+
+h1 {
+    font-family: Impact, Charcoal, sans-serif;
+    font-size: 40px;
+}
+
+body {
+    background-color: aqua;
+}
+
+#pixelPainter {
+    /* border: 5px solid black; */
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}
 
 #canvasOutline {
     height: 500px;
-    width: 500px;
+    width: 600px;
+    /* border: 2px solid blue; */
+    display: inline-block;
+    margin: 10px;
+}
+
+#pixelOutline {
+    /* border: 2px solid red; */
+    width: 600px;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+#buttonBox {
+    /* border: 2px solid pink; */
+    width: 600px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
 .canvasRow {
     display: flex;
     width: 100%;
-    height: 5%;
+    height: 40px;
     
 }
 
 .innerSquare {
     height: 100%;
-    width: 5%;
+    width: 40px;
     border: 1px solid black;
-    display: flex;
 }
 
 .swatchRow {
@@ -41,4 +71,6 @@
     width: 100px;
     font-family: Impact, Charcoal, sans-serif;
     text-align: center;
+    padding: 10px;
+    font-size: 20px;
 }

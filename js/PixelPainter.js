@@ -90,6 +90,7 @@ function getColor() {
 
 // BUTTON HOUSING
 const buttonBox = document.createElement('div');
+buttonBox.id = "buttonBox";
 pixelPainter.appendChild(buttonBox);
 
 // ERASE BUTTON

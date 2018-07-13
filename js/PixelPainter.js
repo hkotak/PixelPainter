@@ -36,14 +36,35 @@ for (let i=0; i<getRows.length; i++) {
 // ADD COLOR TO THE CHOSEN CANVAS
 const getInnerSquare = document.getElementsByClassName('innerSquare');
 for (let i=0; i<getInnerSquare.length; i++) {
-    getInnerSquare[i].addEventListener('click', addColor);
+    getInnerSquare[i].addEventListener('mousedown', addColor);
+    getInnerSquare[i].addEventListener('mouseup', removeEvents);
 }
 
 function addColor() {
     // console.log('sanityCheck');
     this.style.backgroundColor = colorStorage;
-
+    for (let i=0; i<getInnerSquare.length; i++) {
+        getInnerSquare[i].addEventListener('mouseover', dragColor);
+        
+    }
 }
+
+function dragColor() {
+    this.style.backgroundColor = colorStorage;
+    
+}
+
+function removeEvents() {
+    for (let i=0; i<getInnerSquare.length; i++) {
+        getInnerSquare[i].removeEventListener('mouseover', dragColor);
+    }
+}
+
+// function removeColor() {
+//     for (let i=0; i<getInnerSquare.length; i++) {
+//         getInnerSquare[i].removeEventListener('mousemove', dragColor);
+//     }
+// }
 
 
 /*--------------*/
@@ -80,8 +101,6 @@ let colorStorage;
 
 function getColor() {
     colorStorage = this.style.backgroundColor;
-    console.log(colorStorage);
-
 }
 
 /*---------*/
@@ -116,6 +135,35 @@ function clearCanvas() {
         getInnerSquare[i].style.backgroundColor = null;
     }
 }
+
+// SAVE  BUTTON
+const saveButton = document.createElement('div');
+saveButton.className = 'button';
+saveButton.innerHTML = 'SAVE';
+buttonBox.appendChild(saveButton);
+saveButton.addEventListener('click', saveCanvas);
+
+let canvasMemory; // EMPTY VARIABLE TO STORE MEMORY VALUES
+function saveCanvas() {
+    canvasMemory = []; // EVERY TIME FUNCTION FIRES, VARIABLE IS REPLACED WITH AN EMPTY ARRAY 
+    for (let i=0; i<getInnerSquare.length; i++) { 
+        canvasMemory.push(getInnerSquare[i].style.backgroundColor); // VALUES ARE PUSHED INTO THE EMPTY ARRAY ASSIGNED ABOVE
+    }
+}
+
+// LOAD BUTTON 
+const loadButton = document.createElement('div');
+loadButton.className = 'button';
+loadButton.innerHTML = "LOAD";
+buttonBox.appendChild(loadButton);
+loadButton.addEventListener('click', loadCanvas);
+
+function loadCanvas() {
+    for (let i=0; i<getInnerSquare.length; i++) {
+        getInnerSquare[i].style.backgroundColor = canvasMemory[i]; // FUNCTION WILL LOAD VALUE OF ARRAY DECLARED ABOVE
+    }
+}
+
 
 
 
